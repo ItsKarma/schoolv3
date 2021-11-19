@@ -1,15 +1,12 @@
-import Head from 'next/head'
+import Link from 'next/link'
+import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import styles from '../../../styles/Home.module.css'
 
-export default function Grade4() {
+export default function Grade4Math() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Schoolv3</title>
-        <meta name="description" content="School v3" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Header />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -17,14 +14,15 @@ export default function Grade4() {
         </h1>
 
         <p className={styles.description}>
-          Choose a subject
+          Choose a section
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Math &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href="/grade4/math/1.1">
+            <a className={styles.card}>
+              <h2>1.1 &rarr;</h2>
+            </a>
+          </Link>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Science &rarr;</h2>

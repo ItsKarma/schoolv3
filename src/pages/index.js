@@ -1,16 +1,13 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Header from '../components/header'
 import Footer from '../components/footer'
 
 export default function Home() {
+  const gradeList = ["K", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Schoolv3</title>
-        <meta name="description" content="School v3" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Header />
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -18,38 +15,17 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Select a Grade
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Grade 1 &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Grade 2 &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Grade 3 &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          
-          <Link href="/grade4">
-          <a className={styles.card}>
-            <h2>Grade 4 &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-          </Link>
+          {gradeList.map((grade) => (
+            <Link href={"/grade" + grade} key={grade}>
+              <a className={styles.card}>
+                <h2>Grade {grade} &rarr;</h2>
+              </a>
+            </Link>
+          ))}
         </div>
       </main>
       <Footer />
