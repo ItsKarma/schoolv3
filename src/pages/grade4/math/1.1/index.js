@@ -1,11 +1,11 @@
-import G4S1Formulas from '../../../../components/math/g4s1-formulas'
-import Header from '../../../../components/header'
-import Footer from '../../../../components/footer'
-import styles from '../../../../styles/Home.module.css'
+import GetQuestion from '../../../../components/getQuestion';
+import Header from '../../../../components/header';
+import Footer from '../../../../components/footer';
+import styles from '../../../../styles/Home.module.css';
 
-export default function Grade4Math() {
+export default function Grade4MathS1() {
   const getFormula = () => {
-    const form = G4S1Formulas();
+    const form = GetQuestion("MathG4S1");
     return (
       <div>
         <p>Question: {form.question}</p>
@@ -13,7 +13,6 @@ export default function Grade4Math() {
           <summary>Answer: </summary>
           <p>{form.formula} = {form.answer}</p>
         </details>
-
       </div>
     )
   }
