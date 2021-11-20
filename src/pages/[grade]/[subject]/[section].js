@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router'
-import GetQuestion from '../../../../components/getQuestion';
-import Header from '../../../../components/header';
-import Footer from '../../../../components/footer';
-import styles from '../../../../styles/Home.module.css';
+import { useRouter } from 'next/router';
+import GetQuestion from '../../../components/getQuestion';
+import Header from '../../../components/header';
+import Footer from '../../../components/footer';
+import styles from '../../../styles/Home.module.css';
 
-export default function Grade4MathS1() {
-  const { asPath } = useRouter()
+export default function QuestionPage () {
+  const router = useRouter()
+  const { subject, grade, section } = router.query
+
+  // Uppercase the first character of the subject.
+  const niceSubject = `${subject}`.charAt(0).toUpperCase() + `${subject}`.slice(1);
 
   const getFormula = () => {
-    // pluck the grade, subject, and section number out of the url.
-    const grade = asPath.split('/')[1]
-    const subject = asPath.split('/')[2]
-    const section = asPath.split('/')[3]
     const form = GetQuestion(subject, grade, section);
     return (
       <div>
@@ -44,3 +44,7 @@ export default function Grade4MathS1() {
     </div>
   )
 }
+
+QuestionPage.getInitialProps = async () => {
+  return {};
+};

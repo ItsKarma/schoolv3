@@ -1,16 +1,20 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
-import styles from '../../styles/Home.module.css'
+import Header from '../components/header'
+import Footer from '../components/footer'
+import styles from '../styles/Home.module.css'
 
-export default function Grade4() {
+export default function GradePage () {
+  const router = useRouter()
+  const { grade } = router.query
+
   const subjects = [
     {id: "math", name: "Math"},
     {id: "science", name: "Science"},
     {id: "english", name: "English"},
     {id: "socialstudies", name: "Social Studies"}
   ]
-  const grade = 4
+
   return (
     <div className={styles.container}>
       <Header />
@@ -38,3 +42,7 @@ export default function Grade4() {
     </div>
   )
 }
+
+GradePage.getInitialProps = async () => {
+  return {};
+};
