@@ -24,7 +24,6 @@ const F1 = () => {
   }
 }
 
-
 const F2 = () => {
   const name1 = names[Math.floor(Math.random()*names.length)];
   const item = items[Math.floor(Math.random()*items.length)];
@@ -45,7 +44,7 @@ const F2 = () => {
   return {
     question: `${name1} sold ${num1} ${item} for $${value1} each. ${name2} sold ${num2} ${item} for $${value2} each. How much more money did ${name2} make than ${name1}?`,
     answer: (num2 * value2) - (num1 * value1),
-    formula: `(${num2} * ${value2}) - (${num1} * ${value1})`
+    formula: `(${num2} x ${value2}) - (${num1} x ${value1})`
   }
 }
 

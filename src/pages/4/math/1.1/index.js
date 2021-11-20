@@ -2,10 +2,17 @@ import GetQuestion from '../../../../components/getQuestion';
 import Header from '../../../../components/header';
 import Footer from '../../../../components/footer';
 import styles from '../../../../styles/Home.module.css';
+import { useRouter } from 'next/router'
 
 export default function Grade4MathS1() {
+  const { asPath } = useRouter()
   const getFormula = () => {
-    const form = GetQuestion("MathG4S1");
+    // get url
+    // const url = window.location.href
+    const grade = asPath.split('/')[1]
+    const subject = asPath.split('/')[2]
+    const section = asPath.split('/')[3]
+    const form = GetQuestion(subject, grade, section);
     return (
       <div>
         <p>Question: {form.question}</p>

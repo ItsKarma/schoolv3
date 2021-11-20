@@ -1,7 +1,7 @@
-export default function GetQuestion (functionToCall) {
-  // functionToCall is in format SubjectGradeSection ie. "MathG4S1"
+export default function GetQuestion (subject, grade, section) {
+  // functionToCall is in format SubjectGradeSection ie. "Grade4Section1"
 
-  const dynamicallyRequiredModule = require(`./math/${functionToCall}`)
+  const dynamicallyRequiredModule = require(`./${subject}/${grade}/${section}`)
 
   // get the list of functions in our functionToCall
   const funcList = Object.keys(dynamicallyRequiredModule)

@@ -18,7 +18,7 @@ export default function Grade4Math() {
         </p>
 
         <div className={styles.grid}>
-          <Link href="/grade4/math/1.1">
+          <Link href="/4/math/1.1">
             <a className={styles.card}>
               <h2>1.1 &rarr;</h2>
             </a>

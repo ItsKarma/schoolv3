@@ -20,7 +20,7 @@ export default function Home() {
 
         <div className={styles.grid}>
           {gradeList.map((grade) => (
-            <Link href={"/grade" + grade} key={grade}>
+            <Link href={"/" + grade} key={grade}>
               <a className={styles.card}>
                 <h2>Grade {grade} &rarr;</h2>
               </a>

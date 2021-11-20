@@ -26,7 +26,7 @@ export default function Grade4() {
 
         <div className={styles.grid}>
           {subjects.map((subj) => (
-            <Link href={"/grade" + grade + "/" + subj.id} key={subj.id}>
+            <Link href={"/" + grade + "/" + subj.id} key={subj.id}>
               <a className={styles.card}>
                 <h2>{subj.name} &rarr;</h2>
               </a>
