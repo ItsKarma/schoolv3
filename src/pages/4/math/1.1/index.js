@@ -1,14 +1,14 @@
+import { useRouter } from 'next/router'
 import GetQuestion from '../../../../components/getQuestion';
 import Header from '../../../../components/header';
 import Footer from '../../../../components/footer';
 import styles from '../../../../styles/Home.module.css';
-import { useRouter } from 'next/router'
 
 export default function Grade4MathS1() {
   const { asPath } = useRouter()
+
   const getFormula = () => {
-    // get url
-    // const url = window.location.href
+    // pluck the grade, subject, and section number out of the url.
     const grade = asPath.split('/')[1]
     const subject = asPath.split('/')[2]
     const section = asPath.split('/')[3]
