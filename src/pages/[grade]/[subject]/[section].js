@@ -1,4 +1,4 @@
-// import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import GetQuestion from '../../../components/getQuestion';
 import Header from '../../../components/header';
@@ -6,20 +6,30 @@ import Footer from '../../../components/footer';
 import styles from '../../../styles/Home.module.css';
 
 export default function SectionPage () {
+  const [_subject, setSubject] = useState("");
+  const [_grade, setGrade] = useState("");
+  const [_section, setSection] = useState("");
+  const [niceSubject, setNiceSubject] = useState("");
+
   const router = useRouter()
-  const { subject, grade, section } = router.query
+  useEffect(()=>{
+    if(!router.isReady) return;
+    const { grade, subject, section } = router.query;
+    setSubject(subject);
+    setGrade(grade);
+    setSection(section);
+    // Uppercase the first character of the subject.
+    setNiceSubject(`${subject}`.charAt(0).toUpperCase() + `${subject}`.slice(1));
+  }, [router.isReady]);
 
-  // This is a test
-  // useEffect(()=>{
-  //   if(!router.isReady) return;
-  //   // console.log(grade)
-  // }, [router.isReady]);
-
-  // Uppercase the first character of the subject.
-  const niceSubject = `${subject}`.charAt(0).toUpperCase() + `${subject}`.slice(1);
-
-  const getFormula = () => {
-    const form = GetQuestion(subject, grade, section);
+  const createQuestion = () => {
+    let form = {question: "Loading Question...", formula: "Loading Formula...", answer: "Loading Answer..."}
+    try {
+      form = GetQuestion(_subject, _grade, _section);
+    } catch {
+      // TODO: Fix this for dev, it does not effect production.
+      console.warn("Unable to load question. This should only happen during development. Please report if you see this message.")
+    }
     return (
       <div>
         <p>Question: {form.question}</p>
@@ -37,14 +47,14 @@ export default function SectionPage () {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Grade 4
+          Grade 4 - {niceSubject}
         </h1>
 
         <p className={styles.description}>
           Section 1.1
         </p>
 
-        {getFormula()}
+        {createQuestion()}
 
       </main>
       <Footer />
