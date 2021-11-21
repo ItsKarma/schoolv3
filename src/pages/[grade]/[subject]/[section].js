@@ -27,7 +27,8 @@ export default function SectionPage () {
     try {
       form = GetQuestion(_subject, _grade, _section);
     } catch {
-      console.log("Unable to load question.")
+      // Commented out to clean console in prod.
+      // console.log("Unable to load question.")
     }
     return (
       <div>
@@ -50,7 +51,7 @@ export default function SectionPage () {
         </h1>
 
         <p className={styles.description}>
-          Section 1.1
+          Section {_section}
         </p>
 
         {createQuestion()}
