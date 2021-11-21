@@ -7,6 +7,21 @@ module.exports = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  async headers() {
+    return [
+      {
+        source: '/4/math/1.1',
+        headers: [
+          {
+            key: 'content-type',
+            value: 'text/html',
+          },
+        ],
+      },
+    ]
+  },
+
+
   async exportPathMap() {
     const staticRoutes = {
       '/': { page: '/' }, // Index page
