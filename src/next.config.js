@@ -1,7 +1,29 @@
 // import subjects from './components/getQuestion'
-const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-const subjects = ["math", "science", "english", "socialstudies"]
-const sections = ["1.1", "1.2", "1.3", "1.4"]
+
+// TODO: get the pages list from a global location
+//   The individual pages should also get their list from this global location as well
+//   This way the exported pages matches the list actually displayed on the page.
+
+const pages = {
+  "K": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "1": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "2": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "3": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "4": {
+    "math": ["1.1"],
+    "science": [],
+    "english": [],
+    "socialstudies": []
+  },
+  "5": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "6": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "7": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "8": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "9": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "10": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "11": { "math": [], "science": [], "english": [], "socialstudies": [] },
+  "12": { "math": [], "science": [], "english": [], "socialstudies": [] }
+}
 
 module.exports = {
   reactStrictMode: true,
@@ -21,38 +43,29 @@ module.exports = {
     ]
   },
 
-
   async exportPathMap() {
     const staticRoutes = {
       '/': { page: '/' }, // Index page
     };
 
-    const gradeRoutes = {
-      '/K': { page: '/[grade]' },
-      '/1': { page: '/[grade]' },
-      '/2': { page: '/[grade]' },
-      '/3': { page: '/[grade]' },
-      '/4': { page: '/[grade]' },
-      '/4/math': { page: '/[grade]/[subject]' },
-      '/4/math/1.1': { page: '/[grade]/[subject]/[section]' },
-      '/5': { page: '/[grade]' },
-      '/6': { page: '/[grade]' },
-      '/7': { page: '/[grade]' },
-      '/8': { page: '/[grade]' },
-      '/9': { page: '/[grade]' },
-      '/10': { page: '/[grade]' },
-      '/11': { page: '/[grade]' },
-      '/12': { page: '/[grade]' },
-    }
+    // Init empty gradeRoutes
+    const gradeRoutes = {};
 
-    // Attempt to dynamically create the gradeRoutes
-    // const gradeRoutes = grades.forEach((grade) => {
-    //   {
-    //     '/': { page: '/' },
-    //     // `/${grade}`: { page: '/[grade]' };
-    //   }
-    // });
+    // Loop through each object in the pages.
+    // Create a page for each Grade
+    Object.keys(pages).forEach(grade => {
+      gradeRoutes[`/${grade}`] = { page: '/[grade]'};
+      // Create a page for each subject in each grade.
+      Object.keys(pages[`${grade}`]).forEach(subject => {
+        gradeRoutes[`/${grade}/${subject}`] = { page: '/[grade]/[subject]'};
+        // Create a section page for each subject in each grade.
+        pages[`${grade}`][`${subject}`].forEach(section => {
+          gradeRoutes[`/${grade}/${subject}/${section}`] = { page: '/[grade]/[subject]/[section]'};
+        });
+      });
+    });
 
+    // Combine our multiple route objects into a single one to export.
     const routes = Object.assign({}, staticRoutes, gradeRoutes );
 
     return routes;
