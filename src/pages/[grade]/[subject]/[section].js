@@ -27,8 +27,7 @@ export default function SectionPage () {
     try {
       form = GetQuestion(_subject, _grade, _section);
     } catch {
-      // TODO: Fix this for dev, it does not effect production.
-      console.warn("Unable to load question. This should only happen during development. Please report if you see this message.")
+      console.log("Unable to load question.")
     }
     return (
       <div>
