@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link'
-import Header from '../../components/header'
-import Footer from '../../components/footer'
-import styles from '../../styles/Home.module.css'
+import Link from 'next/link';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import styles from '../../styles/Home.module.css';
 
 export default function SubjectPage () {
   const router = useRouter()
@@ -47,6 +47,9 @@ export default function SubjectPage () {
   )
 }
 
-SubjectPage.getInitialProps = async () => {
-  return {};
-};
+// We need getInitialProps for next export to work, but it breaks dev.
+if (process.env.NODE_ENV != 'development') {
+  SubjectPage.getInitialProps = async () => {
+    return {};
+  };
+}
