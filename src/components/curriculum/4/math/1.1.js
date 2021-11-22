@@ -1,18 +1,16 @@
-const names = ["Kristen", "Matt", "Gracie", "Connor", "Sally", "Max", "Cici"];
-const foods = ["hot dogs", "apples", "peachs", "tacos"];
-const items = ["watches", "chairs", "tables", "pictures"];
+import { Names, Foods, Items } from '../../../utils';
 
 const F1 = () => {
-  const name1 = names[Math.floor(Math.random()*names.length)];
-  const food = foods[Math.floor(Math.random()*foods.length)];
+  const name1 = Names[Math.floor(Math.random()*Names.length)];
+  const food = Foods[Math.floor(Math.random()*Foods.length)];
 
   // get position of name1 and remove it from the list so name2 is different.
-  const index = names.indexOf(name1);
+  const index = Names.indexOf(name1);
   if (index > -1) {
-    names.splice(index, 1);
+    Names.splice(index, 1);
   }
 
-  const name2 = names[Math.floor(Math.random()*names.length)];
+  const name2 = Names[Math.floor(Math.random()*Names.length)];
 
   const num1 = Math.floor(Math.random() * 10) + 1;
   const num2 = num1 + Math.floor(Math.random() * 10) + 1;
@@ -25,16 +23,16 @@ const F1 = () => {
 }
 
 const F2 = () => {
-  const name1 = names[Math.floor(Math.random()*names.length)];
-  const item = items[Math.floor(Math.random()*items.length)];
+  const name1 = Names[Math.floor(Math.random()*Names.length)];
+  const item = Items[Math.floor(Math.random()*Items.length)];
 
   // get position of name1 and remove it from the list so name2 is different.
-  const index = names.indexOf(name1);
+  const index = Names.indexOf(name1);
   if (index > -1) {
-    names.splice(index, 1);
+    Names.splice(index, 1);
   }
 
-  const name2 = names[Math.floor(Math.random()*names.length)];
+  const name2 = Names[Math.floor(Math.random()*Names.length)];
 
   const num1 = Math.floor(Math.random() * 10) + 1;
   const value1 = Math.floor(Math.random() * 10) + 1;
