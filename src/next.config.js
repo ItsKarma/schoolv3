@@ -1,50 +1,21 @@
-// import getFileTree from './components/getFileTree';
 const { getFileTree, getSections } = require('./components/getFileTree.js');
 const fileTree = getFileTree();
 const sections = getSections();
-
-// TODO: get the pages list from a global location
-//   The individual pages should also get their list from this global location as well
-//   This way the exported pages matches the list actually displayed on the page.
-// TODO: Can we use our api getSectionNumbers.js to actually generate this list.
-//   We should be able to scan the filesystem right here to build out the pages list.
-
-// const pages = {
-//   "K": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "1": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "2": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "3": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "4": {
-//     "math": ["1.1"],
-//     "science": [],
-//     "english": [],
-//     "socialstudies": []
-//   },
-//   "5": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "6": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "7": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "8": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "9": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "10": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "11": { "math": [], "science": [], "english": [], "socialstudies": [] },
-//   "12": { "math": [], "science": [], "english": [], "socialstudies": [] }
-// }
 
 module.exports = {
 
   reactStrictMode: true,
   poweredByHeader: false,
 
-  // serverRuntimeConfig: {
-  //   PROJECT_ROOT: __dirname
-  // },
-
   publicRuntimeConfig: {
     fileTree
   },
 
   async headers() {
-    // init our empty formatted headers.
+    // We serve the section files with no .html extension, so we need to specify that it is
+    //  an html file in the Header, otherwise the browser will download the file instead of displaying it.
+
+    // Init our empty formatted headers.
     formattedHeaders = []
     // Loop over our sections and add them in the proper format.
     sections.forEach(section => {
@@ -55,19 +26,7 @@ module.exports = {
         ],
       });
     });
-
     return formattedHeaders;
-    // return [
-    //   {
-    //     source: '/4/math/1.1',
-    //     headers: [
-    //       {
-    //         key: 'content-type',
-    //         value: 'text/html',
-    //       },
-    //     ],
-    //   },
-    // ]
   },
 
   async exportPathMap() {
