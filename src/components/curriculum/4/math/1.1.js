@@ -1,7 +1,4 @@
-import { Names, Foods, Items } from '../../../utils';
-const names = Names();
-const foods = Foods();
-const items = Items();
+import { names, foods, items } from '../../../utils';
 
 const F1 = () => {
   const name1 = names[Math.floor(Math.random()*names.length)];
