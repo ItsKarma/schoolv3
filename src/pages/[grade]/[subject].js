@@ -1,16 +1,17 @@
 import { useRouter } from 'next/router';
-import useSWR from 'swr';
+import getConfig from 'next/config'
 import Link from 'next/link';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import styles from '../../styles/Home.module.css';
 
 export default function SubjectPage () {
-  const router = useRouter()
-  const { grade, subject } = router.query
+  const router = useRouter();
+  const { grade, subject } = router.query;
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { data } = useSWR(`/api/getSectionNumbers?grade=${grade}&subject=${subject}`, fetcher);
+  let sections = [];
+  const { publicRuntimeConfig } = getConfig();
+  if (router.isReady) sections = publicRuntimeConfig.fileTree[grade][subject];
 
   // Uppercase the first character of the subject.
   const niceSubject = `${subject}`.charAt(0).toUpperCase() + `${subject}`.slice(1);
@@ -29,7 +30,7 @@ export default function SubjectPage () {
         </p>
 
         <div className={styles.grid}>
-          {data && data.map((section) => (
+          {sections && sections.map((section) => (
             <Link href={`/${grade}/${subject}/${section}`} key={section}>
               <a className={styles.card}>
                 <h2>{section} &rarr;</h2>
