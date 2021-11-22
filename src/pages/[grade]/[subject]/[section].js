@@ -47,7 +47,7 @@ export default function SectionPage () {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Grade 4 - {niceSubject}
+          Grade {_grade} - {niceSubject}
         </h1>
 
         <p className={styles.description}>
