@@ -3,6 +3,8 @@
 // TODO: get the pages list from a global location
 //   The individual pages should also get their list from this global location as well
 //   This way the exported pages matches the list actually displayed on the page.
+// TODO: Can we use our api getSectionNumbers.js to actually generate this list.
+//   We should be able to scan the filesystem right here to build out the pages list.
 
 const pages = {
   "K": { "math": [], "science": [], "english": [], "socialstudies": [] },
@@ -28,6 +30,10 @@ const pages = {
 module.exports = {
   reactStrictMode: true,
   poweredByHeader: false,
+
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname
+  },
 
   async headers() {
     return [

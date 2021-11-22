@@ -1,6 +1,6 @@
 const names = ["Kristen", "Matt", "Gracie", "Connor", "Sally", "Max", "Cici"];
 const foods = ["hot dogs", "apples", "peachs", "tacos"];
-const items = ["apples", "bananas", "peachs", "tacos"];
+const items = ["watches", "chairs", "tables", "pictures"];
 
 const F1 = () => {
   const name1 = names[Math.floor(Math.random()*names.length)];

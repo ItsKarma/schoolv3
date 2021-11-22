@@ -15,8 +15,8 @@ export default function SectionPage () {
   useEffect(()=>{
     if(!router.isReady) return;
     const { grade, subject, section } = router.query;
-    setSubject(subject);
     setGrade(grade);
+    setSubject(subject);
     setSection(section);
     // Uppercase the first character of the subject.
     setNiceSubject(`${subject}`.charAt(0).toUpperCase() + `${subject}`.slice(1));
@@ -25,7 +25,7 @@ export default function SectionPage () {
   const createQuestion = () => {
     let form = {question: "Loading Question...", formula: "Loading Formula...", answer: "Loading Answer..."}
     try {
-      form = GetQuestion(_subject, _grade, _section);
+      form = GetQuestion(_grade, _subject, _section);
     } catch {
       // Commented out to clean console in prod.
       // console.log("Unable to load question.")
