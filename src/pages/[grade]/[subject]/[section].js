@@ -8,7 +8,7 @@ export default function SectionPage () {
   const router = useRouter();
   const { grade, subject, section } = router.query;
 
-  let form = {question: "Loading Question...", formula: "Loading Formula...", answer: "Loading Answer..."}
+  let form = {question: "Loading Question...", formula: "Loading Formula...", answer: "Loading Answer...", explanation: ""}
   let niceSubject = "";
   if (router.isReady) {
     form = GetQuestion(grade, subject, section);
@@ -33,6 +33,7 @@ export default function SectionPage () {
           <details>
             <summary>Answer: </summary>
             <p>{form.formula} = {form.answer}</p>
+            <p>{form.explanation}</p>
           </details>
         </div>
 
