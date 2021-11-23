@@ -28,8 +28,8 @@ const F2 = () => {
   }
 }
 
-const MathG4S1 = {
+const Questions = {
   F1, F2
 }
 
-module.exports = MathG4S1
+module.exports = Questions
