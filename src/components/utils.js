@@ -23,8 +23,12 @@ const getRandomNames = () => {
   return [name1, name2, name3]
 }
 
+const randomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 const Utils = {
-  names, getRandomNames, foods, items
+  names, getRandomNames, foods, items, randomInt,
 }
   
 module.exports = Utils
