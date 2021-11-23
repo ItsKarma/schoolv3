@@ -11,7 +11,7 @@ const triangleAngles = () => {
     question: `Angle A is ${angleA} degrees. Angle B is ${angleB} degrees. Solve for Angle C`,
     answer: 180 - angleA - angleB,
     formula: `180 - ${angleA} - ${angleB}`,
-    explanation: `Three angles of a triangle add up to 180 degrees. We can take 180 degress and subtract the 2 angles that we have to find the degrees of the 3rd angle.`
+    explanation: `All 3 angles of a triangle add up to 180 degrees. We can take 180 degress and subtract the 2 angles that we have to find the degrees of the 3rd angle.`
   }
 }
 
