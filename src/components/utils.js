@@ -1,6 +1,7 @@
 const names = ["Kristen", "Matt", "Gracie", "Connor", "Sally", "Max", "Cici"]
 const foods = ["hot dogs", "apples", "peachs", "tacos"];
 const items = ["watches", "chairs", "tables", "pictures"];
+const instruments = ["gutar", "piano", "trumpet", "drum"];
 
 const getRandomNames = () => {
   // Returns 3 random names as a list.
@@ -28,7 +29,7 @@ const randomInt = (min, max) => {
 }
 
 const Utils = {
-  names, getRandomNames, foods, items, randomInt,
+  names, getRandomNames, foods, items, randomInt, instruments
 }
   
 module.exports = Utils
