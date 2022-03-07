@@ -10,9 +10,9 @@ export default function GradePage () {
 
   const subjects = [
     {id: "math", name: "Math"},
-    {id: "science", name: "Science"},
-    {id: "english", name: "English"},
-    {id: "socialstudies", name: "Social Studies"}
+    // {id: "science", name: "Science"},
+    // {id: "english", name: "English"},
+    // {id: "socialstudies", name: "Social Studies"}
   ]
 
   return (

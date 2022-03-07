@@ -4,7 +4,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 export default function Home() {
-  const gradeList = ["K", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const gradeList = [4]
   return (
     <div className={styles.container}>
       <Header />
