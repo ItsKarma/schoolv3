@@ -1,0 +1,38 @@
+{
+  "name": "schoolv3",
+  "private": true,
+  "scripts": {
+    "dev": "HOST=localhost react-scripts start",
+    "lint": "eslint src",
+    "clean": "rm -rf node_modules package-lock.json build",
+    "build": "CI='' react-scripts build",
+    "serve": "serve -s build",
+    "rebuild": "npm run clean && npm install && npm run build",
+    "reinstall": "npm run clean && npm install"
+  },
+  "dependencies": {
+    "react": "^16.8",
+    "react-dom": "^16.8",
+    "react-router": "6.2.2",
+    "react-router-dom": "6.2.2",
+    "react-scripts": "5.0.0",
+    "atomize": "1.0.28",
+    "react-transition-group": "4.4.2"
+  },
+  "devDependencies": {
+    "eslint": "8.10.0",
+    "serve": "13.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
