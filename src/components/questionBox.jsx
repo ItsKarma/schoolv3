@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Div, Button, Icon } from 'atomize';
+import { Container, Div, Button, Icon, Text, Notification } from 'atomize';
 import GetQuestion from '../components/getQuestion';
 
 export default function QuestionBox(props) {
-
   const [answerExpanded, setAnswerExpanded] = useState(false);
+  const [hint, setHint] = useState(false);
   const [form, setForm] = useState({})
 
   const getQuestion = () => {
@@ -20,7 +20,7 @@ export default function QuestionBox(props) {
 
   useEffect(() => {
     getQuestion();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Div
@@ -30,14 +30,32 @@ export default function QuestionBox(props) {
       bg="gray100"
       shadow="3"
     >
-      <Div
-        align="center"
-        p={{ y:"1rem", x:"2rem" }}
-      >
+      <Container d="flex" flexDir="column" align="center">
+        <span id='support'>{form.support}</span>
         <p id='question'>{form.question}</p>
-      </Div>
+      </Container>
 
       <Div d="flex" justify="right">
+      <Button
+        h="2.5rem"
+        w="2.5rem"
+        bg={hint ? "warning900" : "warning700"}
+        hoverBg={hint ? "warning800" : "warning600"}
+        rounded="circle"
+        m={{ r: "1rem" }}
+        shadow="2"
+        hoverShadow="3"
+        onClick={() => { setHint(true); }}
+      >
+        <Text><b>?</b></Text>
+      </Button>
+      <Notification
+        isOpen={hint}
+        onClose={() => setHint(false)}
+      >
+        {form.hint}
+      </Notification>
+
         <Button
           suffix={
             <Icon
@@ -48,8 +66,8 @@ export default function QuestionBox(props) {
             />
           }
           bg="success700"
-          shadow="2"
-          hoverShadow="4"
+          shadow="1"
+          hoverShadow="3"
           m={{ r: "1rem" }}
           onClick={() => { setAnswerExpanded(!answerExpanded); }}
         >
@@ -59,15 +77,15 @@ export default function QuestionBox(props) {
         <Button
           suffix={
             <Icon
-              name={answerExpanded ? "DownArrow" : "RightArrow"}
+              name="RightArrow"
               size="16px"
               color="white"
               m={{ l: "1rem" }}
             />
           }
           bg="info600"
-          shadow="2"
-          hoverShadow="4"
+          shadow="1"
+          hoverShadow="3"
           m={{ r: "1rem" }}
           onClick={() => {
             getQuestion();

@@ -1,12 +1,14 @@
-import { useParams } from 'react-router';
-import { Div, Button, Container } from 'atomize';
-import Hero from '../../components/hero';
-import Header from '../../components/header';
-import Footer from '../../components/footer';
-import GetCurriculum from '../../components/getCurriculum';
+import { useState } from "react";
+import { useParams } from "react-router";
+import { Div, Collapse, Container, Button } from "atomize";
+import Hero from "../../components/hero";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
+import GetCurriculum from "../../components/getCurriculum";
 
 export default function Subject() {
   const { grade, subject } = useParams();
+  const [expanded, setExpanded] = useState(0);
 
   const sections = GetCurriculum(grade, subject);
 
@@ -16,39 +18,42 @@ export default function Subject() {
   return (
     <Container>
       <Header />
-      <Hero
-        title={`Grade ${grade} - ${niceSubject}`}
-        sub="Choose a Section"
-      />
+      <Hero title={`Grade ${grade} - ${niceSubject}`} sub="Choose a Section" />
 
-      <Div
-        d="flex"
-        justify="center"
-        m={{ y: "1rem"}}>
+      <Div m={{ y: "1rem" }}>
         {sections.map((section) => (
-          <a href={`/practice/${grade}/${subject}/${section.Section}`} key={section.Section}>
+          <Div key={section.Section}>
             <Button
-              h="4rem"
-              p={{ x: "1.75rem" }}
-              m={{ x: "1rem" }}
-              textSize="body"
-              textColor="info700"
-              hoverTextColor="info900"
-              bg="white"
-              hoverBg="info200"
-              border="1px solid"
-              borderColor="info700"
-              hoverBorderColor="info900"
+              m={{ y: ".25rem" }}
+              onClick={() => {
+                setExpanded(section.Section);
+              }}
             >
-            {section.Section}
-            <br />
-            {section.Description}
+              {section.Section} - {section.Description}
             </Button>
-          </a>
+            <Collapse isOpen={expanded === section.Section ? true : false}>
+              {section.Units.map((unit) => (
+                <Div
+                  p={{ x: "1rem", y: ".25rem" }}
+                  bg="gray100"
+                  border="1px solid"
+                  borderColor="gray400"
+                  rounded="lg"
+                  key={unit.Unit}
+                >
+                  <a
+                    href={`/practice/${grade}/${subject}/${section.Section}/${unit.Unit}`}
+                  >
+                    {unit.Unit} - {unit.Description}
+                  </a>
+                </Div>
+              ))}
+            </Collapse>
+          </Div>
         ))}
       </Div>
 
       <Footer />
     </Container>
-  )
+  );
 }

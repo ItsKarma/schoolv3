@@ -7,14 +7,15 @@ export default function Header() {
       <a href={path}>
         <Button
           h="2.5rem"
-          p={{ x: "1.75rem" }}
-          m={{ x: ".5rem" }}
+          p={{ x: ".5rem" }}
+          m={{ x: "1rem" }}
+          bg="white"
           textSize="subheader"
           textColor="black"
-          hoverTextColor="info900"
-          bg="white"
-          hoverBg="info200"
-          hoverBorderColor="info900"
+          border={{ b:"2px solid" }}
+          borderColor="white"
+          hoverBorderColor="black"
+          rounded="0"
         >
           {text}
         </Button>

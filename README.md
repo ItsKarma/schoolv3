@@ -9,18 +9,19 @@ Check open issues as a good place to start.
 First, run the development server:
 
 ```bash
-yarn dev
+npm run reinstall
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Testing
 
-Before pushing any changes, you'll want to make sure to perform a `yarn build` command and test the static site.
+Before pushing any changes, you'll want to make sure to perform a `npm run build` command and test the static site.
 
 ```bash
-yarn build
-yarn start
+npm run build
+npm run serve
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result of the static build.
@@ -37,4 +38,4 @@ When you open a Pull request, Vercel should automatiaclly deploy to a test url t
 
 When merged into the main branch, Vercel should automatically deploy to production.
 
-* If case of a failure during build/test, Vercel will not promote the build to production.
+- If case of a failure during build/test, Vercel will not promote the build to production.
